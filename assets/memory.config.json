@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "db_path": "data/memory.db",
+  "trace_dir": "traces",
+  "report_dir": "reports",
+  "candidates_path": "data/candidates.jsonl",
+  "sensitive_path": "sensitive.json",
+  "eval_path": "eval/queries.json",
+  "embedding": {
+    "provider": "hashing",
+    "base_url": "http://127.0.0.1:8911/v1",
+    "api_key": "",
+    "model": "bge-small-zh-v1.5",
+    "dim": 512,
+    "timeout_s": 15
+  },
+  "llm": {
+    "provider": "none",
+    "base_url": "https://api.deepseek.com/v1",
+    "api_key": "",
+    "model": "deepseek-chat",
+    "timeout_s": 30
+  },
+  "retrieval": {
+    "top_k": 5,
+    "prefetch_count": 3,
+    "prefetch_summary_chars": 160,
+    "min_score_hashing": 0.28,
+    "min_score_http": 0.60,
+    "result_dedupe": 0.88,
+    "fts_candidates_factor": 3,
+    "tag_core_bonus": 0.12,
+    "tag_diffusion_bonus": 0.04,
+    "tag_opposing_penalty": 0.25,
+    "rerank": {
+      "enabled": false,
+      "endpoint": "",
+      "timeout_s": 10
+    }
+  },
+  "write": {
+    "min_user_chars": 40,
+    "dedupe_similarity": 0.9,
+    "novelty_merge_cutoff": 0.1,
+    "merge_similarity_floor": 0.5,
+    "merge_max_chars": 800,
+    "daily_cap_preference": 10,
+    "daily_cap_event": 5,
+    "daily_cap_total": 10,
+    "shadow": true,
+    "allow_group_extract": false,
+    "max_title_chars": 20,
+    "evidence_min_chars": 4
+  },
+  "lifecycle": {
+    "archive_after_days": 90,
+    "activation_archive_threshold": 1,
+    "dry_run": true,
+    "allow_hard_delete": false,
+    "pin_tag": "pin",
+    "daily_hour": 4
+  },
+  "prefetch": {
+    "dedupe_window_s": 120,
+    "max_query_chars": 200,
+    "multi_topic_split": true,
+    "allow_group": false
+  },
+  "reminder": {
+    "active_titles_limit": 10
+  },
+  "memo": {
+    "default_expire_hours": 2
+  },
+  "supervision": {
+    "rounds_without_tool_warning": 20,
+    "cooldown_minutes": 30,
+    "daily_max": 3
+  }
+}

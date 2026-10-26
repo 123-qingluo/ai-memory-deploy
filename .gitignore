@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Runtime data (created by a deployment, never committed)
+/data/
+/traces/
+/reports/
+*.db
+*.db-wal
+*.db-shm
+candidates.jsonl
+*.log
+
+# Local overrides at repo root (templates live under assets/)
+/memory.config.json
+/sensitive.json
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

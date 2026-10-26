@@ -1,0 +1,37 @@
+{
+  "tools": [
+    {
+      "type": "function",
+      "function": {
+        "name": "memory_command",
+        "description": "长期记忆工具。查询偏好/约定/过往事件前先用 search；用户明确要求记住时用 create。支持 && 串联，例如：search 香菜 && read mem-abc123。没有检索结果就说不记得，不要编造。",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "command": {
+              "type": "string",
+              "description": "子命令：search <词> [-top_k N] [-include_archived true] [-include_knowledge true]；read <id>；create -title ... -content ... -type knowledge -triple_tags \"核心|扩散|对立\" [-tags 关键] [-evidence 原话]；update <id> -content ...；delete <id>。多个子命令用 && 连接。"
+            }
+          },
+          "required": ["command"]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "temporary_memo",
+        "description": "短期便签：跨群并行聊天或多步任务期间暂存信息，小时级自动过期，不进长期检索。不要把临时便签当长期记忆。",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "action": {"type": "string", "enum": ["set", "list", "consume"], "description": "set 写入；list 查看；consume 取出并标记已消费"},
+            "content": {"type": "string", "description": "set 时的内容"},
+            "expire_hours": {"type": "number", "description": "过期小时数，默认 2"}
+          },
+          "required": ["action"]
+        }
+      }
+    }
+  ]
+}
