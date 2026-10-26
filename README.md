@@ -79,15 +79,15 @@ ai-memory-deploy/
 └─ DEPLOY-REPORT.md        # 部署证据
 ```
 
-## 本机实测
+## 本次实测记录
 
 2026-10-27，Windows 11 / Python 3.14.3 / SQLite 3.50.4（FTS5 trigram）：
 
 - 全新部署：初始化 OK，自检 **14/14**，离线评测 **Top3 = 0.95（19/20）**；
-- HTTP 生产路径用本地假 OpenAI 兼容服务验证：`create → search → extract → approve → health` 全通；
-- 额外验证：幂等重部署、软删后健康检查、换模型 `reindex`、自定义 embedder 注入、两种卸载模式。
+- HTTP 协议路径（生产模式）用本地假 OpenAI 兼容服务验证：`create → search → extract → approve → health` 全通；
+- 额外验证：幂等重部署、软删后健康检查、换嵌入模型后 `reindex`、自定义 embedder 注入、两种卸载模式（保留数据 / 彻底删除）。
 
-验收细节与唯一未命中样例见 [`references/09-acceptance.md`](references/09-acceptance.md)。
+验收细节与本次实测的唯一未命中样例见 [`references/09-acceptance.md`](references/09-acceptance.md)。
 
 ## 离线模式与生产模式
 
